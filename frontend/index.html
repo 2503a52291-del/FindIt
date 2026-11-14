@@ -1,0 +1,541 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FindIt - Lost & Found</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            🔍Find<span>It</span>
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#report">Report Item</a>
+            <a href="#find">Find Items</a>
+            <a href="#matches">Possible Matches</a>
+        </nav>
+
+        <button class="login-btn" onclick="showLogin()">
+            Login / Register
+        </button>
+
+    </header>
+
+
+    <!-- ================= HOME SECTION ================= -->
+
+    <section id="home" class="hero">
+
+        <h1>Lost Something? Find It Here.</h1>
+
+        <p>
+            A simple platform to report and recover lost belongings
+            in public transport.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#report">
+                <button type="button">Report Lost Item</button>
+            </a>
+
+            <a href="#report">
+                <button type="button">Report Found Item</button>
+            </a>
+
+            <a href="#find">
+                <button type="button">🔍 Find Lost Items</button>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= STATISTICS ================= -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+            <h2 id="lostCount">0</h2>
+            <p>Lost Items</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 id="foundCount">0</h2>
+            <p>Found Items</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 id="claimedCount">0</h2>
+            <p>Returned Items</p>
+        </div>
+
+    </section>
+
+
+    <!-- ================= REPORT SECTION ================= -->
+
+    <section id="report" class="section">
+
+        <h2>Report an Item</h2>
+
+        <p>
+            Help reunite lost belongings with their owners.
+        </p>
+
+        <div class="forms-container">
+
+            <!-- LOST ITEM FORM -->
+
+            <div class="form-card">
+
+                <h3>Report Lost Item</h3>
+
+                <form id="lostForm">
+
+                    <label for="lostName">Item Name</label>
+
+                    <input
+                        type="text"
+                        id="lostName"
+                        placeholder="Example: Black Wallet"
+                        required
+                    >
+
+                    <label for="lostCategory">Category</label>
+
+                    <select id="lostCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Bags">Bags</option>
+                        <option value="Wallets">Wallets</option>
+                        <option value="Documents">Documents</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="lostDescription">Description</label>
+
+                    <textarea
+                        id="lostDescription"
+                        placeholder="Describe the lost item"
+                        required
+                    ></textarea>
+
+                    <label for="lostLocation">Lost Location</label>
+
+                    <input
+                        type="text"
+                        id="lostLocation"
+                        placeholder="Where did you lose it?"
+                        required
+                    >
+
+                    <label for="lostDate">Lost Date</label>
+
+                    <input
+                        type="date"
+                        id="lostDate"
+                        required
+                    >
+
+                    <label for="lostTransport">Transport Details</label>
+
+                    <input
+                        type="text"
+                        id="lostTransport"
+                        placeholder="Bus number, train number, route, etc."
+                    >
+
+                    <button type="submit">
+                        Submit Lost Report
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- FOUND ITEM FORM -->
+
+            <div class="form-card">
+
+                <h3>Report Found Item</h3>
+
+                <form id="foundForm">
+
+                    <label for="foundName">Item Name</label>
+
+                    <input
+                        type="text"
+                        id="foundName"
+                        placeholder="Example: Black Wallet"
+                        required
+                    >
+
+                    <label for="foundCategory">Category</label>
+
+                    <select id="foundCategory" required>
+                        <option value="">Select Category</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Bags">Bags</option>
+                        <option value="Wallets">Wallets</option>
+                        <option value="Documents">Documents</option>
+                        <option value="Clothing">Clothing</option>
+                        <option value="Accessories">Accessories</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="foundDescription">Description</label>
+
+                    <textarea
+                        id="foundDescription"
+                        placeholder="Describe the found item"
+                        required
+                    ></textarea>
+
+                    <label for="foundLocation">Found Location</label>
+
+                    <input
+                        type="text"
+                        id="foundLocation"
+                        placeholder="Where did you find it?"
+                        required
+                    >
+
+                    <label for="foundDate">Found Date</label>
+
+                    <input
+                        type="date"
+                        id="foundDate"
+                        required
+                    >
+
+                    <label for="foundTransport">Transport Details</label>
+
+                    <input
+                        type="text"
+                        id="foundTransport"
+                        placeholder="Bus number, train number, route, etc."
+                    >
+
+                    <button type="submit">
+                        Submit Found Report
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FIND ITEMS SECTION ================= -->
+
+    <section id="find" class="section">
+
+        <h2>Find Lost & Found Items</h2>
+
+        <p>
+            Search through reported lost and found belongings.
+        </p>
+
+        <div class="search-container">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by item name, description or location..."
+            >
+
+            <select id="filterCategory">
+
+                <option value="">All Categories</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Bags">Bags</option>
+                <option value="Wallets">Wallets</option>
+                <option value="Documents">Documents</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Other">Other</option>
+
+            </select>
+
+        </div>
+
+        <div id="reportsContainer" class="reports-container">
+
+            <p>Loading reports...</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= POSSIBLE MATCHES ================= -->
+
+    <section id="matches" class="section">
+
+        <h2>Possible Lost–Found Matches</h2>
+
+        <p>
+            FindIt compares lost and found reports to identify
+            possible matches.
+        </p>
+
+        <div id="matchesContainer" class="matches-container">
+
+            <p>Loading possible matches...</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LOGIN MODAL ================= -->
+
+    <div id="authModal" class="modal" hidden>
+
+        <div class="modal-content">
+
+            <button
+                type="button"
+                class="close-btn"
+                onclick="closeAuth()"
+                aria-label="Close"
+            >
+                &times;
+            </button>
+
+            <h2>🔍 FindIt</h2>
+
+            <p id="authSubtitle">
+                Choose your login type.
+            </p>
+
+
+            <!-- LOGIN CHOICES -->
+
+            <div id="loginChoice">
+
+                <button
+                    type="button"
+                    onclick="showUserLogin()"
+                >
+                    👤 User Login / Register
+                </button>
+
+                <button
+                    type="button"
+                    onclick="showAdminLogin()"
+                >
+                    🛡️ Admin Login
+                </button>
+
+            </div>
+
+
+            <!-- USER LOGIN FORM -->
+
+            <form id="loginForm" hidden>
+
+                <h3>User Login</h3>
+
+                <label for="loginEmail">Email</label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label for="loginPassword">Password</label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button type="submit">
+                    Login as User
+                </button>
+
+                <p>
+                    Don't have an account?
+                    <a href="#" onclick="showRegister(); return false;">
+                        Register here
+                    </a>
+                </p>
+
+                <p>
+                    Administrator?
+                    <a href="#" onclick="showAdminLogin(); return false;">
+                        Admin Login
+                    </a>
+                </p>
+
+                <button
+                    type="button"
+                    onclick="showLogin()"
+                >
+                    Back
+                </button>
+
+            </form>
+
+
+            <!-- USER REGISTRATION FORM -->
+
+            <form id="registerForm" hidden>
+
+                <h3>Create User Account</h3>
+
+                <label for="registerName">Full Name</label>
+
+                <input
+                    type="text"
+                    id="registerName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <label for="registerEmail">Email</label>
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label for="registerPhone">Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="registerPhone"
+                    placeholder="Enter your phone number"
+                    required
+                >
+
+                <label for="registerPassword">Password</label>
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Create a password"
+                    minlength="6"
+                    required
+                >
+
+                <button type="submit">
+                    Create User Account
+                </button>
+
+                <p>
+                    Already registered?
+                    <a href="#" onclick="showUserLogin(); return false;">
+                        Login here
+                    </a>
+                </p>
+
+                <button
+                    type="button"
+                    onclick="showLogin()"
+                >
+                    Back
+                </button>
+
+            </form>
+
+
+            <!-- ADMIN LOGIN FORM -->
+
+            <form id="adminLoginForm" hidden>
+
+                <h3>Administrator Login</h3>
+
+                <label for="adminEmail">Admin Email</label>
+
+                <input
+                    type="email"
+                    id="adminEmail"
+                    placeholder="Enter administrator email"
+                    required
+                >
+
+                <label for="adminPassword">Password</label>
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    placeholder="Enter administrator password"
+                    required
+                >
+
+                <button type="submit">
+                    Login as Admin
+                </button>
+
+                <button
+                    type="button"
+                    onclick="showLogin()"
+                >
+                    Back
+                </button>
+
+            </form>
+
+
+            <!-- AUTHENTICATION MESSAGE -->
+
+            <p id="authMessage" role="status"></p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <h3>🔍 FindIt</h3>
+
+        <p>
+            Helping people recover their lost belongings.
+        </p>
+
+        <p>
+            &copy; 2026 FindIt. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

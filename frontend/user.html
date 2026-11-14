@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindIt - User Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard { max-width: 1150px; margin: 35px auto; padding: 20px; }
+        .dashboard-section { background: white; padding: 24px; margin: 24px 0; border-radius: 12px; box-shadow: 0 3px 14px #00000012; }
+        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 20px; }
+        .dashboard form { display: grid; gap: 12px; }
+        .dashboard input, .dashboard select, .dashboard textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 7px; font: inherit; }
+        .dashboard textarea { min-height: 85px; resize: vertical; }
+        .dashboard button, .action-button { padding: 10px 15px; border: 0; border-radius: 7px; cursor: pointer; font: inherit; }
+        .primary-action { background: #2563eb; color: white; }
+        .edit-action { background: #e6a700; color: #222; }
+        .delete-action { background: #dc3545; color: white; }
+        .claim-action { background: #198754; color: white; }
+        .report-card, .match-card, .notification-card { border: 1px solid #e3e3e3; border-radius: 10px; padding: 17px; margin: 14px 0; }
+        .report-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .status-text { font-weight: bold; color: #2563eb; }
+        .dashboard-message { margin: 10px 0; }
+        .dashboard-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .dashboard-top a { text-decoration: none; }
+        .empty-message { color: #666; padding: 15px 0; }
+        .notification-card.unread { border-left: 4px solid #2563eb; }
+        @media(max-width:600px) {
+            .dashboard { padding: 12px; }
+            .dashboard-section { padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">🔍Find<span>It</span></div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#addReport">Add Report</a>
+        <a href="#myReports">My Reports</a>
+        <a href="#myMatches">Possible Matches</a>
+        <a href="#myNotifications">Notifications</a>
+    </nav>
+    <button class="login-btn" id="logoutButton">Logout</button>
+</header>
+
+<main class="dashboard">
+    <div class="dashboard-top">
+        <div>
+            <h1>My User Dashboard</h1>
+            <p>Welcome, <strong id="userName">Passenger</strong>!</p>
+        </div>
+        <a class="action-button primary-action" href="index.html">Go to Homepage</a>
+    </div>
+
+    <p id="pageMessage" class="dashboard-message" role="status"></p>
+
+    <section class="dashboard-section" id="addReport">
+        <h2>Add a Lost or Found Report</h2>
+        <div class="dashboard-grid">
+            <form id="lostForm">
+                <h3>Report Lost Item</h3>
+                <input id="lostName" placeholder="Item name" required>
+                <select id="lostCategory" required>
+                    <option value="">Select category</option>
+                    <option>Electronics</option><option>Wallet</option>
+                    <option>Bag</option><option>Documents</option>
+                    <option>Clothing</option><option>Other</option>
+                </select>
+                <textarea id="lostDescription" placeholder="Describe the item" required></textarea>
+                <input id="lostLocation" placeholder="Where did you lose it?" required>
+                <input id="lostDate" type="date" required>
+                <input id="lostTransport" placeholder="Bus / Train / Metro">
+                <button class="primary-action" type="submit">Submit Lost Report</button>
+            </form>
+
+            <form id="foundForm">
+                <h3>Report Found Item</h3>
+                <input id="foundName" placeholder="Item name" required>
+                <select id="foundCategory" required>
+                    <option value="">Select category</option>
+                    <option>Electronics</option><option>Wallet</option>
+                    <option>Bag</option><option>Documents</option>
+                    <option>Clothing</option><option>Other</option>
+                </select>
+                <textarea id="foundDescription" placeholder="Describe the item" required></textarea>
+                <input id="foundLocation" placeholder="Where did you find it?" required>
+                <input id="foundDate" type="date" required>
+                <input id="foundTransport" placeholder="Bus / Train / Metro">
+                <button class="primary-action" type="submit">Submit Found Report</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="dashboard-section" id="myReports">
+        <h2>My Lost Reports</h2>
+        <div id="myLostReports"><p class="empty-message">Loading your lost reports...</p></div>
+        <hr>
+        <h2>My Found Reports</h2>
+        <div id="myFoundReports"><p class="empty-message">Loading your found reports...</p></div>
+    </section>
+
+    <section class="dashboard-section" id="myMatches">
+        <h2>🎯 Possible Matches</h2>
+        <p>Review possible matches carefully. A match score is only a suggestion, not proof of ownership.</p>
+        <div id="userMatches"><p class="empty-message">Loading possible matches...</p></div>
+    </section>
+
+    <section class="dashboard-section" id="myClaims">
+        <h2>My Ownership Claims</h2>
+        <div id="userClaims"><p class="empty-message">Loading claims...</p></div>
+    </section>
+
+    <section class="dashboard-section" id="myNotifications">
+        <h2>Notifications</h2>
+        <div id="userNotifications"><p class="empty-message">Loading notifications...</p></div>
+    </section>
+</main>
+
+<footer>
+    <h3>FindIt - Lost & Found</h3>
+    <p>Helping passengers reconnect with their belongings.</p>
+    <p>© 2026 FindIt. All rights reserved.</p>
+</footer>
+
+<script src="user.js"></script>
+</body>
+</html>
